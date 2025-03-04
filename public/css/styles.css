@@ -4,3 +4,1033 @@
 *:after {
   box-sizing: border-box;
 }
+
+
+#wrapper{
+  overflow-x: hidden;
+}
+
+.car-specs {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 300px;
+  background-color: green;
+}
+
+.action{
+  color: black;
+  padding: 0.6rem;
+  background-color: #01B0D2;
+  width: 6rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif; /* Apply custom font */
+}
+
+.car-details{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  position: absolute;
+  width: 9rem;
+  height: 8rem;
+  background-color: rgba(255, 255, 255, 0.4);
+  left: 2rem;
+  top: 1rem;
+  font-size: 0.8rem;
+  font-family: 'PT Sans', sans-serif; /* Apply custom font */
+  font-weight: bold;
+}
+
+.car-details ul li{
+  list-style-type: none;
+  margin-right: 1rem;
+  padding: 0.1rem;
+  color: #01B0D2;
+}
+
+.car-details h2{
+  margin-top: -0.5em;
+  font-family: 'PT Sans', sans-serif; /* Apply custom font */
+}
+
+.hero-image{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 18rem;
+  height: 10rem;
+  bottom: 0;
+  top: 0.6rem;
+  left: 6.5rem;
+  z-index: -1;
+}
+
+.hero-image img{
+  width: 100%;
+  height: 100%;
+}
+
+.heading{
+  font-size: 1.2rem;
+  font-family: 'Roboto', sans-serif; /* Apply custom font */
+  margin-left: 0.4rem;
+}
+
+header{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.6rem;
+  font-family: 'Roboto', sans-serif; /* Apply custom font */
+}
+
+header a{
+  text-decoration: none;
+  color: black;
+  font-family: 'Roboto', sans-serif; /* Apply custom font */
+}
+
+a.cse-motors{
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-family: 'PT Sans', sans-serif; /* Apply custom font */
+}
+
+a.my-account{
+  position: absolute;
+  right: 0;
+  margin-right: 1.2rem;
+  top: 1.5rem;
+  font-family: 'PT Sans', sans-serif; /* Apply custom font */
+}
+
+nav{
+  width: 100%;
+}
+
+nav ul{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  padding: 0.6rem;
+  margin: 0 0.5rem;
+}
+
+nav ul li{
+  list-style-type: none;
+  color: white;
+}
+
+nav ul li a{
+  text-decoration: none;
+  color: white;
+  font-family: 'Roboto', sans-serif; /* Apply custom font */
+}
+
+nav ul li a:hover{
+  text-decoration: underline;
+}
+
+.car-details h2, p{
+  color: #01B0D2;
+}
+
+div.car-upgrades, div.car-parts{
+  width: 100%;
+}
+
+div.delorean-carUpgrades{
+  display: grid;
+  grid-auto-flow: row;
+  grid-template: 1fr 1fr/ 1fr 1fr;
+  gap: 1rem;
+  width: 100%;
+}
+
+div.upgrade-container{
+  display: flex;
+  justify-content:center ;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.image-container{
+  display: flex;
+  justify-content:center ;
+  align-items: center;
+  background-color: #01B0D2;
+  width: 100%;
+  height: 5.6rem;
+}
+
+.upgrade-detail{
+  text-decoration: underline;
+  color: blue;
+}
+
+footer p{
+  color: black;
+  font-weight: bold;
+  font-size: 0.8rem;
+  font-family: 'Roboto', sans-serif; /* Apply custom font */
+}
+
+.car-details-upgrades{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 12rem;
+}
+
+.car-parts ul li{
+  padding: 0.5rem 0;
+}
+
+/*styling for inventories depending on classification*/
+
+#inv-display{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-auto-flow: row;
+  gap: 1.5rem;
+  margin: 0 -2rem;
+  width: 100%;
+  justify-items: center;
+  align-items: center;
+  background-color: white;
+}
+
+.namePrice{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+#inv-display li{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 5px 10px 14px rgba(0, 0, 0, 0.8);
+  border: 1px solid black;
+  border-radius: 0.2rem;
+  gap: 0.1rem;
+  background-color: black;
+  width: 100%;
+  height: 100%;
+}
+
+#inv-display li a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+
+#inv-display li img{
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+
+/*styling for car Details*/
+.inventory-details{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-auto-flow: row;
+  width: 100%;
+  box-shadow: 4px 8px 14px rgba(0, 0, 0, 0.8);
+  gap: 1rem;
+  margin: 0 2rem;
+}
+
+.description{
+  color: black;
+  text-transform: capitalize;
+  text-shadow: 0.5px 1px 2px rgba(0, 0, 0, 0.6);
+  justify-self: center;
+  align-self: center;
+  font-family: 'PT Sans', sans-serif; /* Apply custom font */
+}
+
+.details-title{
+  padding: 1rem;
+  width: 100%;
+  background-color: whitesmoke;
+  text-align: center;
+  font-family: 'PT Sans', sans-serif; /* Apply custom font */
+}
+
+.price{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 2rem;
+  width: 80%;
+  padding: 1rem;
+  border: 1px solid black;
+}
+
+.price h3, .price p{
+  color: black;
+  font-size: 1.5rem;
+  font-family: 'Roboto', sans-serif; /* Apply custom font */
+}
+
+.miles{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 2rem;
+  width: 80%;
+  padding: 1rem;
+  background-color: rgb(202, 196, 196);
+  border: 1px solid black;
+}
+
+.miles h3, .miles p{
+  color: black;
+  font-size: 1.5rem;
+  font-family: 'Roboto', sans-serif; /* Apply custom font */
+}
+
+.color{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 2rem;
+  width: 80%;
+  padding: 1rem;
+  border: 1px solid black;
+}
+
+.color h3, .color p{
+  color: black;
+  font-size: 1.5rem;
+  font-family: 'Roboto', sans-serif; /* Apply custom font */
+}
+
+.contact{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.contact h3{
+  color: black;
+  font-size: 1.5rem;
+  font-family: 'Roboto', sans-serif; /* Apply custom font */
+}
+
+.contact p{
+  color: black;
+  font-size: 1.5rem;
+  font-family: 'Roboto', sans-serif; /* Apply custom font */
+}
+
+.container{
+  background-color: #E8E4E1;
+}
+
+.container-header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 2rem;
+  color: black;
+}
+
+.footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 2rem;
+  color: black;
+  background-color: #D4D2D1;
+}
+
+.footer h3{
+  font-family: 'PT Sans', sans-serif; 
+}
+
+.footer p{
+  font-family: 'PT Sans', sans-serif;
+}
+
+@media  screen and (min-width:762px) {
+
+  body{
+    background-image: url("../images/site/small_check.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+    * {
+      box-sizing: border-box;
+    }
+    
+    #searchAll {
+      display: flex;
+      width: 100%;
+    }
+    
+    #input-container {
+      display: flex;
+      width: 100%;
+    }
+    
+    #inputValue {
+      padding: 10px;
+      font-size: 17px;
+      border: 1px solid grey;
+      width: 80%;
+      background: #f1f1f1;
+      border-radius: 5px 0 0 5px; /* Rounded left corners */
+    }
+    
+    #searchButton {
+      width: 20%;
+      padding: 10px;
+      background: #2196F3;
+      color: white;
+      font-size: 17px;
+      border: 1px solid grey;
+      border-left: none; 
+      cursor: pointer;
+      border-radius: 0 5px 5px 0; 
+    }
+    
+    #searchButton:hover {
+      background: #0b7dda;
+    }
+    
+    #form-li {
+      margin-top: 0.5rem;
+    }
+      
+    
+  #wrapper{
+  overflow-x: hidden;
+  background-color: white;
+  border: 3px solid #01B0D2;
+  margin: 2rem 4rem 0 4rem;
+  border-radius: 2rem;
+}
+
+.car-specs {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 300px;
+  
+}
+
+.action{
+  color: black;
+  padding: 0.9rem;
+  background-color: #01B0D2;
+  width: 15rem;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.car-details{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  position: absolute;
+  width: 18rem;
+  height: 15rem;
+  background-color: rgba(255, 255, 255, 0.4) ;
+  left: 5rem;
+  top: 7rem;
+  font-size: 1.5rem;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+.car-details ul li{
+  list-style-type: none;
+  margin-right: -2rem;
+  padding: 0.1rem;
+  color: #01B0D2;
+  font-size: 1rem;
+}
+
+.car-details ul{
+  margin-right: -4rem;
+}
+
+
+.car-details h2{
+  margin-top: -0.5em;
+}
+.hero-image{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40rem;
+  height: 25rem;
+  bottom: 0;
+  top: 0.6rem;
+  left: 70%;
+  z-index: 1;
+}
+
+.hero-image img{
+  width: 100%;
+  height: 100%;
+}
+
+.heading{
+  font-size: 1.2rem;
+  font-family: sans-serif;
+  margin-left: 0.4rem;
+}
+
+header{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.6rem;
+}
+
+header a{
+  text-decoration: none;
+  color: black;
+}
+
+a.cse-motors{
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: sans-serif, Times, serif;
+}
+
+a.my-account{
+  position: absolute;
+  font-weight: bold;
+  right: 0;
+  margin-right: 1.2rem;
+  top: 1.5rem;
+  font-family: sans-serif, Times, serif;
+
+}
+
+nav{
+  width: 100%;
+}
+
+nav ul{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  padding: 0.8rem;
+  margin: 0 0.5rem;
+}
+
+nav ul li{
+  list-style-type: none;
+  color: white;
+}
+
+nav ul li a{
+  text-decoration: none;
+  color: white;
+  font-family: sans-serif, 'Times New Roman', Times, serif;
+  font-size: 1.2rem;
+}
+
+nav ul li a:hover{
+  text-decoration: underline;
+}
+.car-details h2, p{
+  color: #01B0D2;
+}
+
+.car-details{
+  z-index: 2;
+}
+
+div.car-upgrades, div.car-parts{
+  width: 100%;
+}
+
+div.car-parts ul li{
+  font-size: 1.4rem;
+}
+
+div.delorean-carUpgrades{
+  display: grid;
+  grid-auto-flow: row;
+  grid-template: 1fr 1fr/ 1fr 1fr;
+  gap: 1rem;
+  width: 100%;
+}
+
+div.upgrade-container{
+  display: flex;
+  justify-content:center ;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.image-container{
+  display: flex;
+  justify-content:center ;
+  align-items: center;
+  background-color: #01B0D2;
+  width: 100%;
+  height: 5.6rem;
+}
+
+.upgrade-detail{
+  text-decoration: underline;
+}
+
+footer p{
+  color: black;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+
+
+.car-details-upgrades{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-auto-flow: row;
+  gap: 1rem;
+  width: 100%;
+  margin-top: 26rem;
+}
+
+.car-upgrades{
+  margin-left: -1rem;
+}
+
+.car-parts{
+  margin-left:  1rem;
+  margin-top: -4rem;
+}
+
+#formElement{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 400px;
+  background-color: blue;
+  color: white;
+  margin: 1rem 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+ 
+}
+
+#signup-link a{
+  color: white;
+}
+
+#no-account{
+  color: white;
+}
+
+#no-account a{
+  color: white;
+
+
+}
+
+
+
+/*css for register form*/
+
+.form-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: blueviolet;
+  width: 400px;
+  height: 90vh;
+  color: white;
+  margin: 0 auto;
+}
+
+.formElement{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 420px;
+  background-color: blue;
+  margin: 0.1rem 0.2rem;
+  padding: 1rem;
+  border-radius: 1rem;
+ 
+}
+
+label{
+  text-align: left;
+  font-size: 1.2rem;
+}
+
+button.register-button{
+  width: 5rem;
+  border-radius: 2rem;
+  margin-top: 0.5rem;
+  padding: 0.1rem;
+  font-size: 1rem;
+}
+
+input[type="email"], input[type="text"]{
+  padding: 0.1rem;
+  border-radius: 0.5rem;
+  height: 1.4rem;
+  font-size: 1rem;
+}
+
+#show-password{
+  width: 7rem;
+  padding: 0.2rem 0.2rem 0.1rem 0.1rem;
+  background-color: black;
+  color: whitesmoke;
+  border-radius: 2rem;
+  text-align: left;
+}
+
+/* Styling invalid form inputs */
+input:required:invalid,
+input:focus:invalid {
+    border: 2px solid #01B0D2; 
+    background-color: #ffeef0; 
+    color:#007BFF;
+    outline: none; 
+    box-shadow: 0 0 5px rgba(230, 57, 70, 0.5); 
+    cursor: not-allowed; 
+}
+
+input:focus:invalid::placeholder {
+    color: #007BFF; 
+    opacity: 1;
+}
+
+#psw-exp{
+  color: white;
+}
+
+/*search form css*/
+
+#form-li{
+  margin-right: -3rem;
+}
+
+
+.input-container {
+  position: relative;
+  max-width: 200px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px 0px 10px 10px; 
+  font-size: 16px;
+}
+
+button#searchButton {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 2rem;
+  border: none;
+  background-color: #007BFF;
+  color: white;
+  padding: 0 8px;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+}
+/*
+
+
+@media  screen and (min-width:560px) {
+
+  body{
+    background-image: url("../images/site/small_check.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  #wrapper{
+    border: 4px solid blue;
+    margin: 1.1rem 3rem;
+    border-radius: 1rem;
+    z-index: 1;
+    background-color: white;
+  }
+
+  .car-specs{
+    width: 100%;
+  }
+  .hero-image{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 55%;
+    height: 20rem;
+    bottom: 0;
+    top: 0.6rem;
+    left: 18rem;
+    z-index: 1;
+  }
+
+  .hero-image img{
+    width: 100%;
+    height: 100%;
+  }
+
+  .car-details{
+    z-index: 2;
+  }
+
+  
+  .heading{
+    font-size: 1.2rem;
+    font-family: sans-serif;
+    margin-left: 0.4rem;
+  }
+  
+  
+  .car-details-upgrades{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-auto-flow: row;
+    gap: 1rem;
+    width: 100%;
+    margin-top: 22rem;
+  }
+
+  .car-upgrades{
+    margin-left: -2rem;
+  }
+
+  .car-parts{
+    margin-left:  1rem;
+  }
+
+  
+.action{
+  color: black;
+  padding: 0.6rem;
+  background-color: blue;
+  width: 6rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.car-details{
+  display: flex;
+  justify-content: center;
+  align-items: left;
+  flex-direction: column;
+  position: absolute;
+  width: 20rem;
+  height: 15rem;
+  opacity: 0.7;
+  background-color: gainsboro;
+  left: 8rem;
+  top: 2rem;
+  font-size: 1.5rem;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+.car-details li{
+  list-style-type: none;
+  margin-right: 1rem;
+  padding: 0.3rem;
+  color: blue;
+}
+
+
+.car-details h2{
+  margin-top: -0.6;
+}
+
+nav li a{
+  font-size: 1.1rem;
+}
+
+
+.heading{
+  font-size: 2.5rem;
+  font-family: sans-serif;
+  margin-left: 0.6rem;
+}
+
+
+.action{
+  color: black;
+  padding: 1rem;
+  background-color: blue;
+  width: 11rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.car-parts li{
+  font-size: 1.3rem;
+}
+
+a.cse-motors{
+  font-size: 2rem;
+}
+
+a.my-account{
+  font-size: 1.1rem;
+
+}
+  
+
+footer p{
+  font-size: 1.1rem;
+}
+
+#inv-display{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-auto-flow: row;
+  gap: 1rem;
+  width: 100%;
+
+}
+
+#inv-display li{
+  margin: 0 auto;
+  list-style-type: none;
+}
+
+#inv-display li img{
+  width: 280px;
+}
+
+.inventory-details{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  grid-auto-flow: row;
+  width: 100%;
+}
+
+.description{
+  font-weight: bold;
+  text-align: center;
+}
+
+.first-details{
+  width: 100%;
+  height: 20rem;
+  margin-left: 1rem;
+}
+
+.second-details{
+  width: 100%;
+  margin-right: 2rem;
+
+}
+
+
+.first-details img{
+  width: 100%;
+  height: 100%;
+}
+
+.second-details{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.third-details{
+  position: relative;
+  display: grid;
+  grid-template: repeat(3, 1fr)/repeat(3, 1fr);
+  width: 100%;
+  gap: 1rem;
+}
+.price{
+  grid-column: 1/3;
+  grid-row: 1/2;
+  border: 2px solid green;
+  text-align: center;
+}
+
+.miles{
+  grid-column: 3/4;
+  grid-row: 1/2;
+  border: 2px solid yellow;
+  text-align: center;
+}
+
+.color{
+  grid-column: 1/4;
+  grid-row: 2/3;
+  border: 2px solid  blue;
+  text-align: center;
+}
+
+.contact{
+  grid-column: 1/4;
+  grid-row: 3/4;
+  border: 2px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.purchase{
+ text-align: center;
+  font-weight: bold;
+  padding: 0.2rem;
+}
+}
+
+
+*/
