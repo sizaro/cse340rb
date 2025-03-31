@@ -27,7 +27,7 @@
   width: 6rem;
   font-size: 0.8rem;
   font-weight: bold;
-  font-family: 'Roboto', sans-serif; /* Apply custom font */
+  font-family: 'Roboto', sans-serif;
 }
 
 .car-details{
@@ -42,7 +42,7 @@
   left: 2rem;
   top: 1rem;
   font-size: 0.8rem;
-  font-family: 'PT Sans', sans-serif; /* Apply custom font */
+  font-family: 'PT Sans', sans-serif; 
   font-weight: bold;
 }
 
@@ -55,7 +55,7 @@
 
 .car-details h2{
   margin-top: -0.5em;
-  font-family: 'PT Sans', sans-serif; /* Apply custom font */
+  font-family: 'PT Sans', sans-serif;
 }
 
 .hero-image{
@@ -78,7 +78,7 @@
 
 .heading{
   font-size: 1.2rem;
-  font-family: 'Roboto', sans-serif; /* Apply custom font */
+  font-family: 'Roboto', sans-serif; 
   margin-left: 0.4rem;
 }
 
@@ -89,19 +89,19 @@ header{
   justify-content: space-between;
   align-items: center;
   padding: 1.6rem;
-  font-family: 'Roboto', sans-serif; /* Apply custom font */
+  font-family: 'Roboto', sans-serif; 
 }
 
 header a{
   text-decoration: none;
   color: black;
-  font-family: 'Roboto', sans-serif; /* Apply custom font */
+  font-family: 'Roboto', sans-serif; 
 }
 
 a.cse-motors{
   font-size: 1.2rem;
   font-weight: bold;
-  font-family: 'PT Sans', sans-serif; /* Apply custom font */
+  font-family: 'PT Sans', sans-serif; 
 }
 
 a.my-account{
@@ -109,7 +109,7 @@ a.my-account{
   right: 0;
   margin-right: 1.2rem;
   top: 1.5rem;
-  font-family: 'PT Sans', sans-serif; /* Apply custom font */
+  font-family: 'PT Sans', sans-serif; 
 }
 
 nav{
@@ -134,7 +134,7 @@ nav ul li{
 nav ul li a{
   text-decoration: none;
   color: white;
-  font-family: 'Roboto', sans-serif; /* Apply custom font */
+  font-family: 'Roboto', sans-serif; 
 }
 
 nav ul li a:hover{
@@ -184,7 +184,7 @@ footer p{
   font-weight: bold;
   font-size: 0.8rem;
   margin-left: 1rem;
-  font-family: 'Roboto', sans-serif; /* Apply custom font */
+  font-family: 'Roboto', sans-serif;
 }
 
 .car-details-upgrades{
@@ -199,6 +199,273 @@ footer p{
 .car-parts ul li{
   padding: 0.5rem 0;
 }
+
+/*styling for inventories depending on classification*/
+
+#inv-display{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-auto-flow: row;
+  gap: 1.5rem;
+  margin: 0 -2rem;
+  width: 100%;
+  justify-items: center;
+  align-items: center;
+  background-color: white;
+}
+
+.namePrice{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+#inv-display li{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 5px 10px 14px rgba(0, 0, 0, 0.8);
+  border: 1px solid black;
+  border-radius: 0.2rem;
+  gap: 0.1rem;
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  max-width: 350px;
+}
+
+#inv-display li a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+
+#inv-display li img{
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+
+
+
+/*styling for car Details*/
+.inventory-details{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-auto-flow: row;
+  width: 100%;
+  box-shadow: 4px 8px 14px rgba(0, 0, 0, 0.8);
+  gap: 1rem;
+  margin: 0 2rem;
+}
+
+.description{
+  color: black;
+  text-transform: capitalize;
+  text-shadow: 0.5px 1px 2px rgba(0, 0, 0, 0.6);
+  justify-self: center;
+  align-self: center;
+  font-family: 'PT Sans', sans-serif; /* Apply custom font */
+}
+
+.details-title{
+  padding: 1rem;
+  width: 100%;
+  background-color: whitesmoke;
+  text-align: center;
+  font-family: 'PT Sans', sans-serif; /* Apply custom font */
+}
+
+.price{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 2rem;
+  width: 80%;
+  padding: 1rem;
+  border: 1px solid black;
+}
+
+.price h3, .price p{
+  color: black;
+  font-size: 1.5rem;
+  font-family: 'Roboto', sans-serif; /* Apply custom font */
+}
+
+.miles{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 2rem;
+  width: 80%;
+  padding: 1rem;
+  background-color: rgb(202, 196, 196);
+  border: 1px solid black;
+}
+
+.miles h3, .miles p{
+  color: black;
+  font-size: 1.5rem;
+  font-family: 'Roboto', sans-serif; /* Apply custom font */
+}
+
+.color{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 2rem;
+  width: 80%;
+  padding: 1rem;
+  border: 1px solid black;
+}
+
+.color h3, .color p{
+  color: black;
+  font-size: 1.5rem;
+  font-family: 'Roboto', sans-serif; /* Apply custom font */
+}
+
+.contact{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.contact h3{
+  color: black;
+  font-size: 1.5rem;
+  font-family: 'Roboto', sans-serif; /* Apply custom font */
+}
+
+.contact p{
+  color: black;
+  font-size: 1.5rem;
+  font-family: 'Roboto', sans-serif; /* Apply custom font */
+}
+
+.container{
+  background-color: #E8E4E1;
+}
+
+.container-header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 2rem;
+  color: black;
+}
+
+.contact{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid black;
+  width: 80%;
+  margin-bottom: 1rem;
+}
+
+.purchase{
+ text-align: center;
+  font-weight: bold;
+  padding: 0.8rem;
+}
+
+/** error link*/
+
+.error-link{
+  margin-left: 1.2rem;
+  margin-bottom: 1rem;
+  margin-top: -0.5rem;
+  color: #01B0D2;
+}
+
+.error-link a{
+  font-size: 1.4rem;
+}
+
+
+/** styling for the login form**/
+
+.form-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: blueviolet;
+  width: 400px;
+  height: 90vh;
+  color: white;
+  margin: 0 auto;
+}
+
+.formElement{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 420px;
+  background-color: blue;
+  margin: 0.1rem 0.2rem;
+  padding: 1rem;
+  border-radius: 1rem;
+ 
+}
+
+label{
+  text-align: left;
+  font-size: 1.2rem;
+}
+
+input[type="email"], input[type="text"]{
+  padding: 0.1rem;
+  border-radius: 0.5rem;
+  height: 1.4rem;
+  font-size: 1rem;
+}
+
+#show-password{
+  width: 7rem;
+  padding: 0.2rem 0.2rem 0.1rem 0.1rem;
+  background-color: black;
+  color: whitesmoke;
+  border-radius: 2rem;
+  text-align: left;
+}
+
+/* Styling invalid form inputs */
+input:required:invalid,
+input:focus:invalid {
+    border: 2px solid #01B0D2; 
+    background-color: #ffeef0; 
+    color:#007BFF;
+    outline: none; 
+    box-shadow: 0 0 5px rgba(230, 57, 70, 0.5); 
+    cursor: not-allowed; 
+}
+
+input:focus:invalid::placeholder {
+    color: #007BFF; 
+    opacity: 1;
+}
+
+#psw-exp{
+  color: white;
+}
+
 
 @media  screen and (min-width:762px) {
 
