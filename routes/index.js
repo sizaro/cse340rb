@@ -12,7 +12,7 @@ router.get("/", utilities.handleErrors(baseController.buildHome))
 //Route to add new classification
 router.get("/newclassification", utilities.handleErrors(classController.newClassification))
 
-router.post("/addnewclassification", utilities.handleErrors(classController.addNewClassification))
+router.post("/addnewclassification", regValidate.classificationRules(), regValidate.checkClassData, utilities.handleErrors(classController.addNewClassification))
 
 //Route to getting a new car form new vehicle
 router.get("/newcar", utilities.handleErrors(invController.newCar))

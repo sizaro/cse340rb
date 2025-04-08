@@ -29,6 +29,7 @@ const validate = {}
       body("account_email")
       .trim()
       .isEmail()
+      .notEmpty()
       .normalizeEmail() // refer to validator.js docs
       .withMessage("A valid email is required.")
       .custom(async (account_email) => {
@@ -235,7 +236,7 @@ validate.newCarRules = () => {
       // display navigation and render page with error messages
       let nav = await utilities.getNav();
       let classificationList = await utilities.buildClassificationList()
-      res.render("inventory/newcar", {
+      res.render("inventory/newcarform", {
         errors,
         title: "Add New Car",
         nav,
@@ -257,6 +258,37 @@ validate.newCarRules = () => {
     next();
   };
 
+
+  
+  // Rules for the Classification form
+  validate.classificationRules = () => {
+    return [
+      body("classification_name")
+        .trim()
+        .escape()
+        .notEmpty()
+        .withMessage("Classification name is required.")
+        .matches(/^[A-Za-z]+$/)
+        .withMessage("Classification name must contain letters only."),
+    ]
+  }
+  
+  // CHECK: Classification form validation result
+  validate.checkClassData = async (req, res, next) => {
+    const { classification_name } = req.body
+    let errors = validationResult(req)
+    if (!errors.isEmpty()) {
+      let nav = await utilities.getNav()
+      res.render("inventory/newclassification", {
+        title: "Add Classification",
+        nav,
+        errors,
+        classification_name,
+      })
+      return
+    }
+    next()
+  }
 
   
   module.exports = validate
