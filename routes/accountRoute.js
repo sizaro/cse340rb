@@ -20,5 +20,9 @@ router.post(
   )
 
 
+//Route to login
+router.post("/login", regValidate.loginRules(), regValidate.checkLoginData, utilities.handleErrors(accountController.accountLogin))
+
+
 
 module.exports = router;

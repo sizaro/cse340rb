@@ -1,5 +1,7 @@
 /******* Change Box Model ***************/
-*,
+:root{
+  --primary-color: #01B0D2;
+}
 *:before,
 *:after {
   box-sizing: border-box;
@@ -405,7 +407,7 @@ footer p{
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: blueviolet;
+  background-color:var(--primary-color) ;
   width: 400px;
   height: 90vh;
   color: white;
@@ -447,24 +449,179 @@ input[type="email"], input[type="text"]{
 }
 
 /* Styling invalid form inputs */
-input:required:invalid,
 input:focus:invalid {
-    border: 2px solid #01B0D2; 
-    background-color: #ffeef0; 
-    color:#007BFF;
+    border: 2px solid white; 
+    background-color: rgba(0, 128, 0, 0.377); 
     outline: none; 
     box-shadow: 0 0 5px rgba(230, 57, 70, 0.5); 
     cursor: not-allowed; 
 }
 
-input:focus:invalid::placeholder {
-    color: #007BFF; 
-    opacity: 1;
-}
 
 #psw-exp{
   color: white;
 }
+
+/**  management view css***/
+#vehicle-management a{
+  margin-left: 1rem;
+  font-size: 1.1rem;
+  color: black;
+}
+
+/*** css for classification form***/
+
+/* Form container */
+form#classificationForm {
+  display: block;
+  margin: 0 auto;
+  background-color: var(--primary-color);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+}
+
+/* Form headings */
+form#classificationForm h2 {
+  margin-bottom: 0.5rem;
+  color: #1A1A1A;
+}
+
+form#classificationForm p {
+  font-size: 0.95rem;
+  color: #000203;
+  margin-top: 0.25rem;
+  margin-bottom: 1.25rem;
+}
+
+/* Input label */
+form#classificationForm label {
+  display: block;
+  text-align: left;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #1A1A1A;
+}
+
+/* Input field */
+form#classificationForm input[type="text"] {
+  width: 100%;
+  padding: 0.65rem;
+  border: 1px solid white;
+  border-radius: 6px;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  box-sizing: border-box;
+}
+
+/* Submit button */
+form#classificationForm button[type="submit"] {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  color: white;
+  background-color: black;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+form#classificationForm button[type="submit"]:hover {
+  background-color: rgba(0, 0, 0, 0.662);
+}
+
+
+
+/** new car form css   *****/
+/* Form wrapper */
+form#newCarForm {
+  display: block;
+  margin: 0 auto;
+  background-color: var(--primary-color);
+  padding: 2rem;
+  border-radius: 12px;
+  border: unset;
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Section title */
+form#newCarForm h2 {
+  margin-bottom: 1rem;
+  text-align: center;
+  color: black;
+}
+
+/* Labels */
+form#newCarForm label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: black;
+}
+
+/* Labels */
+form#newCarForm p {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: black;
+}
+
+/* Inputs and textarea */
+form#newCarForm input,
+form#newCarForm textarea,
+form#newCarForm select {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+form#newCarForm input:valid,
+form#newCarForm textarea:valid {
+  border-color: #ccc;
+}
+
+
+/* Submit button */
+form#newCarForm button[type="submit"] {
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  background-color: black;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+form#newCarForm button[type="submit"]:hover {
+  background-color: rgba(0, 0, 0, 0.534);
+}
+
+/* Error message list */
+ul.notice {
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  list-style: none;
+  color: black;
+}
+
+.notice{
+  margin-left: 1rem;
+}
+
 
 
 @media  screen and (min-width:762px) {
