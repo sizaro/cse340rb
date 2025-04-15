@@ -18,6 +18,7 @@ const session = require("express-session")
 const pool = require('./database/')
 const bodyParser = require("body-parser")
 const routeIndex = require("./routes")
+const cookieParser = require("cookie-parser")
 
 
 
@@ -37,6 +38,12 @@ app.use(session({
 }))
 
 
+app.use((req, res, next) => {
+  res.locals.loggedin = req.session.loggedin || false;
+  res.locals.accountData = req.session.accountData || null;
+  next();
+});
+
 
 // Express Messages Middleware
 app.use(require('connect-flash')())
@@ -47,6 +54,8 @@ app.use(function(req, res, next){
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(cookieParser())
+app.use(utilities.checkJWTToken)
 
 /* ***********************
  * View engine and Templates

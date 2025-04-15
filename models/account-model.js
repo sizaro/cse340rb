@@ -38,4 +38,35 @@ async function getAccountByEmail (account_email) {
   }
 }
 
-module.exports = {registerAccount, checkExistingEmail, getAccountByEmail}
+async function getAccountById(accountId) {
+  try {
+    const result = await pool.query(
+      'SELECT account_id, account_firstname, account_lastname, account_email, account_type FROM account WHERE account_id = $1',
+      [accountId]
+    );
+    return result.rows[0] || null; // Return null if no account is found
+  } catch (error) {
+    console.error('Error fetching account by ID:', error);
+    throw new Error('Error fetching account data');
+  }
+}
+
+
+async function updateAccount(account_id, account_firstname, account_lastname, account_email, account_password) {
+  try {
+    const sql = `
+      UPDATE account
+      SET account_firstname = $1, account_lastname = $2, account_email = $3, account_password = $4
+      WHERE account_id = $5
+      RETURNING *`;
+    const values = [account_firstname, account_lastname, account_email, account_password, account_id];
+    const result = await pool.query(sql, values);
+    return result.rows[0]; // Return the updated account data
+  } catch (error) {
+    console.error("Model error: " + error);
+    throw new Error("Failed to update account");
+  }
+}
+
+
+module.exports = {registerAccount, checkExistingEmail, getAccountByEmail, getAccountById, updateAccount}

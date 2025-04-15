@@ -30,7 +30,7 @@ classController.newClassification = async function(req,res) {
 
 
 
-classController .addNewClassification = async function (req, res) {
+classController.addNewClassification = async function (req, res) {
     let nav = await utilities.getNav();
     //const loginForm = await utilities.buildLoginForm();
     //const RegisterForm = await utilities.buildRegisterForm();

@@ -289,6 +289,96 @@ validate.newCarRules = () => {
     }
     next()
   }
-
   
+  // Account rules for incoming update account data
+  validate.updateAccountRules = () => {
+    return [
+      body('account_id')
+        .trim()
+        .notEmpty()
+        .withMessage('Account ID is required.'),
+  
+      body('account_firstname')
+        .trim()
+        .escape()
+        .notEmpty()
+        .isLength({ min: 2 })
+        .matches(/^[A-Za-z]+$/)
+        .withMessage('First name should contain only letters, at least 2 characters, no spaces.'),
+  
+      body('account_lastname')
+        .trim()
+        .escape()
+        .notEmpty()
+        .isLength({ min: 2 })
+        .matches(/^[A-Za-z]+$/)
+        .withMessage('Last name should contain only letters, at least 2 characters, no spaces.'),
+  
+      body('account_email')
+        .trim()
+        .notEmpty()
+        .isEmail()
+        .normalizeEmail()
+        .withMessage('A valid email is required.')
+    ];
+  };
+  
+
+// Check for data errors and render view
+validate.checkUpdateAccountData = async (req, res, next) => {
+  const {
+    account_id,
+    account_firstname,
+    account_lastname,
+    account_email
+  } = req.body;
+
+  let errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav();
+    res.render('account/editaccount', {
+      title: 'Edit Account',
+      nav,
+      errors,
+      account_id,
+      account_firstname,
+      account_lastname,
+      account_email
+    });
+    return;
+  }
+
+  next();
+};
+
+
+
+// Password validation rules
+validate.updatePasswordRules = () => {
+  return [
+    body("new_password")
+      .trim()
+      .notEmpty()
+      .isStrongPassword({
+        minLength: 12,
+        minLowercase: 1,
+        minUppercase: 1,
+        minNumbers: 1,
+        minSymbols: 1,
+      })
+      .withMessage("Password does not meet requirements."),
+  ];
+};
+
+// Check password data
+validate.checkUpdatePasswordData = async (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    req.flash('notice', errors.array().map(err => err.msg).join(' '));
+    return res.redirect('/account/update');
+  }
+  next();
+};
+
   module.exports = validate
