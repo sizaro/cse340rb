@@ -31,11 +31,12 @@ router.get("/logout", utilities.handleErrors(accountController.logout))
 
 
 // Route to get the account edit view
-router.get("/edit", utilities.checkLogin, utilities.handleErrors(accountController.buildeditAccount))
+router.get("/edit/:account_id", utilities.checkLogin, utilities.handleErrors(accountController.buildeditAccount))
+
 
 // Route to handle account update submission
 router.post(
-  "/update",
+  "/update/",
   utilities.checkLogin, regValidate.updateAccountRules(), regValidate.checkUpdateAccountData, utilities.handleErrors(accountController.updateAccount)
 )
 

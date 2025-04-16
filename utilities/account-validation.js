@@ -357,9 +357,16 @@ validate.checkUpdateAccountData = async (req, res, next) => {
 // Password validation rules
 validate.updatePasswordRules = () => {
   return [
-    body("new_password")
+    body('account_id')
+        .trim()
+        .notEmpty()
+        .withMessage('Account ID is required.'),
+
+    body('account_password')
       .trim()
       .notEmpty()
+      .matches(/^(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9]).{12,}$/)
+      .withMessage('New password is required.')
       .isStrongPassword({
         minLength: 12,
         minLowercase: 1,
@@ -367,16 +374,27 @@ validate.updatePasswordRules = () => {
         minNumbers: 1,
         minSymbols: 1,
       })
-      .withMessage("Password does not meet requirements."),
+      .withMessage('Password does not meet requirements.'),
   ];
 };
 
+
 // Check password data
 validate.checkUpdatePasswordData = async (req, res, next) => {
-  const errors = validationResult(req);
+  const {
+    account_id,
+    account_password
+  } = req.body;
+  let errors = validationResult(req);
   if (!errors.isEmpty()) {
-    req.flash('notice', errors.array().map(err => err.msg).join(' '));
-    return res.redirect('/account/update');
+    let nav = await utilities.getNav()
+    res.render("./account/editaccount", {
+      title: "Update User",
+      nav,
+      errors,
+      account_id,
+      account_password
+    })
   }
   next();
 };

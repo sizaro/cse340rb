@@ -15,7 +15,7 @@
       <form action="/account/login" method="post" id="formElement">
           <label for="email" id="account_email" >Email:</label><br>
           <input type="email" name="account_email" id="account_email" required value="<%= locals.account_email || '' %>"><br>
-          <label for="account_password">Password:</label>
+          <label for="account_password">Password:</label><br>
           <input type="text" name="account_password" id="account_password" 
                 pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" required>
           <div class="password-description">

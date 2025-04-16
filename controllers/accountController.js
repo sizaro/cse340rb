@@ -40,9 +40,7 @@ async function registerAccount(req, res) {
   let nav = await utilities.getNav()
   const { account_firstname, account_lastname, account_email, account_password } = req.body
 
-
-  // Hash the password before storing
-  let hashedPassword
+     let hashedPassword 
   try {
     // regular password and cost (salt is generated automatically)
     hashedPassword = await bcrypt.hashSync(account_password, 10)
@@ -142,8 +140,11 @@ async function buildLoggedinView(req, res) {
   } catch (error) {
     console.error("Error building user view:", error);
     req.flash("notice", "An error occurred while trying to access your account.");
-    res.redirect("/account/login");
-  }
+    res.status(400).render("account/login", {
+      title: "Login",
+      nav,
+      errors: null,
+  })}
 }
 
 
@@ -167,7 +168,7 @@ const buildeditAccount = async (req, res, next) => {
     const accountData = await acctModel.getAccountById(account_id);
 
     console.log("this is the data to be updated ", accountData)
-    const itemName = `${accountData[0].account_firstname} ${accountData[0].account_lastname}`
+    const itemName = `${accountData.account_firstname} ${accountData.account_lastname}`
 
     res.render("account/editaccount", {
       title: "Edit Account" + itemName,
@@ -193,6 +194,8 @@ const buildeditAccount = async (req, res, next) => {
  * ************************** */
 const updateAccount = async (req, res, next)=> {
   const nav = await utilities.getNav();
+  const accountData = res.locals.accountData || null;
+  const loggedin = res.locals.loggedin || false;
   const {
     account_id,
     account_firstname,
@@ -240,40 +243,48 @@ const updateAccount = async (req, res, next)=> {
  *  Update Account Password
  * ************************** */
 const updatePassword = async (req, res, next) => {
-  const { account_id, current_password, new_password } = req.body;
-  let nav = await utilities.getNav();
-  const user = await accountModel.getAccountById(account_id);
+  const { account_id, account_password } = req.body;
+  const nav = await utilities.getNav();
+    let classificationSelect = await utilities.buildClassificationList()
+    const vehicleManagement = await utilities.vehicleManagement()
 
-  if (!user) {
-    req.flash('notice', 'User not found.');
-    return res.redirect('/account/update');
-  }
+  try {
+    // Hash the new password
+    const hashedPassword = await bcrypt.hashSync(account_password, 10);
 
-  // Verify current password
-  const isMatch = await bcrypt.compare(current_password, user.password);
-  if (!isMatch) {
-    req.flash('notice', 'Current password is incorrect.');
-    return res.redirect('/account/update');
-  }
+    // Update password in the database
+    const updateResult = await acctModel.updatePassword(account_id, hashedPassword);
 
-  // Validate new password
-  const validationErrors = validateNewPassword(new_password);
-  if (validationErrors.length > 0) {
-    req.flash('notice', validationErrors.join(' '));
-    return res.redirect('/account/update');
-  }
-
-  // Hash new password
-  const hashedPassword = await bcrypt.hash(new_password, 10);
-
-  // Update password in database
-  const updateResult = await accountModel.updatePassword(account_id, hashedPassword);
-  if (updateResult) {
-    req.flash('notice', 'Password successfully updated.');
-    res.redirect('/account/management');
-  } else {
-    req.flash('notice', 'Failed to update password.');
-    res.redirect('/account/update');
+    if (updateResult) {
+      req.flash("notice", "Password successfully updated.");
+      res.status(201).render("inventory/management", {
+        title: "Vehicle Management",
+        nav,
+        classificationSelect,
+        vehicleManagement,
+        errors: null
+      });
+    } else {
+      console.log("this is the data to be updated ", accountData)
+      req.flash("notice", "Failed to update password.");
+      res.status(201).render("inventory/management", {
+        title: "Vehicle Management",
+        nav,
+        classificationSelect,
+        vehicleManagement,
+        errors: null
+      });
+    }
+  } catch (error) {
+    console.error("Error updating password:", error);
+    req.flash("notice", "An error occurred while updating the password.");
+    res.status(201).render("inventory/management", {
+      title: "Vehicle Management",
+      nav,
+      classificationSelect,
+      vehicleManagement,
+      errors: null
+    });
   }
 };
 
