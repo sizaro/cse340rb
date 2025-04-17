@@ -139,4 +139,47 @@ async function deleteInventory(inv_id) {
 }
 
 
-module.exports = {getClassifications, getInventoryByClassificationId, getInventoryByInventoryId, addNewCar, updateInventory, deleteInventory, getInventoryByInventoryId1}
+
+/* ***************************
+ *  Insert Feedback Data
+ * ************************** */
+async function insertFeedback(
+  inv_id,
+  account_email,
+  phone,
+  message
+) {
+  try {
+    const submittedAt = new Date();
+    const sql =
+      "INSERT INTO public.feedback (inv_id, account_email, phone, message, submitted_at) VALUES ($1, $2, $3, $4, $5) RETURNING *";
+    const data = await pool.query(sql, [
+      inv_id,
+      account_email,
+      phone,
+      message,
+      submittedAt
+    ]);
+    return data.rows[0];
+  } catch (error) {
+    console.error("Model error: " + error);
+    throw error;
+  }
+}
+
+
+
+async function getAllFeedback() {
+  try {
+    const sql = 'SELECT * FROM public.feedback ORDER BY submitted_at DESC';
+    const data = await pool.query(sql);
+    return data.rows;
+  } catch (error) {
+    console.error('Model error:', error);
+    throw error;
+  }
+}
+
+
+
+module.exports = {getClassifications, getInventoryByClassificationId, getInventoryByInventoryId, addNewCar, updateInventory, deleteInventory, getInventoryByInventoryId1, insertFeedback, getAllFeedback}

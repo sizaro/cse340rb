@@ -8,6 +8,7 @@
     <% if (accountData.account_type === "Employee" || accountData.account_type === "Admin") { %>
       <h3 class="welcome-inventory">Inventory Management</h3>
       <p class="welcome-inventory-management"><a href="/inv">Manage Inventory</a></p>
+      <p class="welcome-inventory-management"><a href="/inv/feedbackList">View Feedback</a></p>
     <% } %>
 
     <p class="welcome-inventory-management"><a href="/account/edit/<%= accountData.account_id %>">Update Account Information</a></p>

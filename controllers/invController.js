@@ -1,4 +1,5 @@
 const invModel = require("../models/inventory-model")
+const acctModel = require("../models/account-model")
 const utilities = require("../utilities/")
 
 const invCont = {}
@@ -355,5 +356,98 @@ invCont.deleteInventoryItem = async function (req, res, next) {
 }
 
 
+
+// controllers/invController.js
+
+invCont.dealerForm = async (req, res, next) => {
+  let nav = await utilities.getNav();
+  try {
+    const { inv_id } = req.params;
+    res.render('inventory/feedbackForm', {
+      title: "Contact Form",
+      nav,
+      inv_id,
+      errors:null
+    }
+      
+      );
+  } catch (error) {
+    console.error('Error rendering dealer form:', error);
+    req.flash("notice", "Sorry, failed to get the contact dealer form.")
+    res.render('/index', {
+      title: "Home",
+      nav,
+      inv_id,
+      errors:null
+    });
+  }
+};
+
+
+invCont.submitFeedback = async (req, res, next) => {
+  let nav = await utilities.getNav();
+  const { inv_id, account_email, phone, message } = req.body;
+
+  try {
+    // Check if the email exists using the existing function
+    const accountData = await acctModel.getAccountByEmail(account_email);
+
+    if (!accountData) {
+      req.flash("notice", "The provided email does not exist in our records.");
+      return res.status(400).render("inventory/feedbackForm", {
+        title: "Contact Form",
+        nav,
+        errors: null,
+        inv_id,
+        account_email,
+        phone,
+        message
+      });
+    }
+    await invModel.insertFeedback(inv_id, account_email, phone, message );
+
+    req.flash("notice", "Feedback Submitted Succesfully, You will Be Contacted Promptly");
+    res.render('index', {
+      title:"Home",
+      nav
+    }); // Adjust the route as needed
+  } catch (error) {
+    console.error('Error submitting feedback:', error);
+    req.flash("notice", "an error while submitting the feedback");
+    res.status(500).render("inventory/feedbackForm", {
+      title: "Contact Dealer",
+      nav,
+      errors: null,
+      inv_id,
+      account_email,
+      phone,
+      message
+    });
+  }
+
+}
+
+
+invCont.showFeedbackPage = async (req, res, next) => {
+  try {
+    const feedbackList = await invModel.getAllFeedback();
+    console.log("this is the data to be put in the grid", feedbackList )
+    const grid = await utilities.buildFeedbackGrid(feedbackList);
+    let nav = await utilities.getNav();
+    res.render('inventory/feedbackList', {
+      title: 'Feedback Entries',
+      nav,
+      grid
+    });
+  } catch (error) {
+    console.error('Controller error:', error);
+    req.flash("notice", "an error ocurred while delivering feedback lists");
+    res.status(500).rende("index", {
+      title: "Home",
+      nav,
+      errors: null
+    });
+  }
+}
 
 module.exports = invCont

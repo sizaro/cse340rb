@@ -6,6 +6,7 @@ const utilities = require("../utilities")
 const updateValidate = require("../utilities/inventory-validation")
 const classController = require("../controllers/classContoller")
 const checkEmployeeOrAdmin = require("../utilities")
+const validate = require("../utilities/account-validation")
 
 // Public route - classification view
 router.get("/type/:classificationId", invController.buildByClassificationId);
@@ -35,5 +36,14 @@ router.get("/delete/:inv_id", checkEmployeeOrAdmin.checkEmployeeOrAdmin, utiliti
 
 // Protected - process delete
 router.post("/delete/", checkEmployeeOrAdmin.checkEmployeeOrAdmin, utilities.handleErrors(invController.deleteInventory))
+
+// get a dealer form for contact
+router.get("/dealer/:inv_id", utilities.handleErrors(invController.dealerForm))
+
+//submit feedback route
+router.post("/feedback/", updateValidate.FeedbackValidationRules(),updateValidate.CheckUpdateData, utilities.handleErrors(invController.submitFeedback))
+
+// Protected - view feedback list
+router.get("/feedbackList", checkEmployeeOrAdmin.checkEmployeeOrAdmin, utilities.handleErrors(invController.showFeedbackPage))
 
 module.exports = router;

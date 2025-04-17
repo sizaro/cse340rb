@@ -90,6 +90,7 @@ Util.buildClassificationGrid = async function(data){
             </div>
             <div class="contact">
               <h3>Contact us at +256758116304</h3>
+              <a class="dealer" href="/inv/dealer/${data.inv_id}">Start Inquiry</a>
               <button class="purchase">Start-Purchase</button>
             </div>
           </div>
@@ -199,7 +200,31 @@ Util.checkEmployeeOrAdmin = (req, res, next) => {
   }
 }
 
-  /* ****************************************
+ 
+
+Util.buildFeedbackGrid = async (feedbackList) => {
+  if (!feedbackList || feedbackList.length === 0) {
+    return await '<p class="notice">No feedback entries found.</p>';
+  }
+
+  let grid = await '<div class="feedback-grid">';
+  feedbackList.forEach((fb) => {
+    grid += `
+      <div class="feedback-entry">
+        <p><strong>Email:</strong> ${fb.account_email}</p>
+        <p><strong>Inventory ID:</strong> ${fb.inv_id}</p>
+        <p><strong>Phone:</strong> ${fb.phone}</p>
+        <p><strong>Message:</strong> ${fb.message}</p>
+        <p><strong>Submitted At:</strong> ${new Date(fb.submitted_at).toLocaleString()}</p>
+      </div>
+    `;
+  });
+  grid += '</div>';
+  return grid;
+}
+
+
+/* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 
  * General Error Handling

@@ -119,4 +119,63 @@ validate.CheckUpdateData = async (req, res, next) => {
   };
   
 
+
+
+
+// Validation rules for feedback form
+validate.FeedbackValidationRules = () => {
+  return [
+    body('inv_id')
+      .trim()
+      .notEmpty()
+      .withMessage('Inventory ID is required.')
+      .isInt({ min: 1 })
+      .withMessage('Inventory ID must be a positive integer.'),
+
+    body('account_email')
+      .trim()
+      .notEmpty()
+      .withMessage('Email is required.')
+      .isEmail()
+      .withMessage('Please enter a valid email address.'),
+
+    body('phone')
+      .trim()
+      .notEmpty()
+      .withMessage('Phone number is required.')
+      .matches(/^\+?[0-9\s\-]{7,15}$/)
+      .withMessage('Please enter a valid phone number.'),
+
+    body('message')
+      .trim()
+      .notEmpty()
+      .withMessage('Message cannot be empty.')
+      .isLength({ min: 10 })
+      .withMessage('Message must be at least 10 characters long.')
+  ];
+};
+
+// Middleware to check for validation errors
+validate.CheckFeedbackData = async (req, res, next) => {
+  const errors = validationResult(req);
+  const { inv_id, account_email, phone, message } = req.body;
+
+  if (!errors.isEmpty()) {
+    const nav = await utilities.getNav();
+    return res.render('inventory/feedbackForm', {
+      title: 'Send Feedback',
+      nav,
+      errors,
+      inv_id,
+      account_email,
+      phone,
+      message
+    });
+  }
+
+  next();
+};
+
+
+
 module.exports = validate
